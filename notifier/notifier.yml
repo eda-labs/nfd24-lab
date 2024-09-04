@@ -8,6 +8,6 @@ spec:
   sources:
     alarms:
       include:
-      - "*"
+        - "*"
   providers:
-  - discord
+    - discord

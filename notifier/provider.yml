@@ -1,0 +1,7 @@
+apiVersion: notifiers.eda.nokia.com/v1
+kind: Provider
+metadata:
+  name: discord
+spec:
+  enabled: true
+  uri: discord://yQeo_GQx3enCixFzlxE1UetZAUnSF9isl6rBfkBgb9vuurlgomstbhPpoyJryAMeLdby@1280864861592485900
