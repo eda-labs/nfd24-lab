@@ -74,10 +74,12 @@ jobs:
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         id: wrangler-deploy
+        env:
+          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy site --project-name=eda-labs --branch=${{ github.ref_name }}
+          command: pages deploy site --project-name=eda-labs --branch=${{ BRANCH_NAME }}
 
       - name: Add deploy comment to PR
         uses: actions/github-script@v7
