@@ -46,6 +46,8 @@ jobs:
 
   publish-docs:
     runs-on: ubuntu-22.04
+    env:
+      BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
     permissions:
       pull-requests: write
       issues: write
