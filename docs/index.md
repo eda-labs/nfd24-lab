@@ -23,6 +23,20 @@ Each of you has been assigned a delegate `id`; using this identifier, you can ac
 
 As crazy as it may sound, it is 2024 and we will still ask you to have your terminals dusted off and ready to SSH. Not because we are old-fashioned, but the Infrastructure as Code movement has been around for a while and we want you to try this yourself.
 
+/// details | :scream: I don't have a terminal emulator
+    type: danger
+That is unfortunate, but fear not! We have prepared a web based terminals for each and one of you.
+
+Copy a link below with substituting the **`<id>`** with your delegate id.
+
+```
+https://go.srlinux.dev/ac1ssh<id>
+```
+
+Once the web terminal is open, click on the :octicons-plus-circle-24: button and you'll drop down in a beatiful shell of your sandbox environment.
+
+///
+
 ## Let's go
 
 This is all we ask of you, lets jump right into the first lab
