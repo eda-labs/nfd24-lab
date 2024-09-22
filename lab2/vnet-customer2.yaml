@@ -1,0 +1,75 @@
+apiVersion: services.eda.nokia.com/v1alpha1
+kind: VirtualNetwork
+metadata:
+  name: customer2
+  namespace: default
+spec:
+  bridgeDomains:
+  - name: customer2-storage-network
+    spec:
+      eviPool: evi-pool
+      l2proxyARPND:
+        dynamicLearning:
+          enabled: false
+        ipDuplication:
+          enabled: false
+          holdDownTime: 9
+          monitoringWindow: 3
+          numMoves: 5
+        proxyARP: false
+        proxyND: false
+        tableSize: 250
+      macAging: 300
+      tunnelIndexPool: tunnel-index-pool
+      vniPool: customer2-vni-pool
+  - name: customer2-corp-services
+    spec:
+      eviPool: evi-pool
+      l2proxyARPND:
+        dynamicLearning:
+          enabled: false
+        ipDuplication:
+          enabled: false
+          holdDownTime: 9
+          monitoringWindow: 3
+          numMoves: 5
+        proxyARP: false
+        proxyND: false
+        tableSize: 250
+      macAging: 300
+      tunnelIndexPool: tunnel-index-pool
+      vniPool: customer2-vni-pool
+  - name: customer2-vm-network
+    spec:
+      eviPool: evi-pool
+      l2proxyARPND:
+        dynamicLearning:
+          enabled: false
+        ipDuplication:
+          enabled: false
+          holdDownTime: 9
+          monitoringWindow: 3
+          numMoves: 5
+        proxyARP: false
+        proxyND: false
+        tableSize: 250
+      macAging: 300
+      tunnelIndexPool: tunnel-index-pool
+      vniPool: customer2-vni-pool
+  vlans:
+  - name: customer2-vm-network-vlan-1
+    spec:
+      bridgeDomain: customer2-vm-network
+      interfaceSelector:
+      - eda.nokia.com/role=edge
+      vlanID: "2500"
+  - name: customer2-corp-services-vlan-1
+    spec:
+      bridgeDomain: customer2-corp-services
+      egress:
+        dot1pRewritePolicy: ""
+        dscpRewritePolicy: ""
+      interfaceSelector:
+      - eda.nokia.com/role=edge
+      vlanID: "2700"
+      vlanPool: ""

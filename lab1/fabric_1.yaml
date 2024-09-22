@@ -1,0 +1,25 @@
+apiVersion: fabrics.eda.nokia.com/v1alpha1
+kind: Fabric
+metadata:
+  name: sunnyvale-dc1
+spec:
+  borderLeafs:
+    borderLeafNodeSelector: 
+      - eda.nokia.com/role=borderleaf
+  leafs:
+    leafNodeSelector: 
+      - eda.nokia.com/role=leaf
+  spines:
+    spineNodeSelector: 
+      - eda.nokia.com/role=spine
+  interSwitchLinks:
+    linkSelector: 
+    - eda.nokia.com/role=interSwitch
+    poolIPV4: ipv4-pool
+  systemPoolIPV4: systemipv4-pool
+  underlayProtocol:
+    asnPool: asn-pool
+    protocol:
+      - EBGP
+  overlayProtocol:
+    protocol: EBGP
