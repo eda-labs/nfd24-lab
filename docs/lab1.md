@@ -89,7 +89,7 @@ Copy the token and open up the Headlamp UI in a browser by visiting the followin
 
 | Connection | URL/Command                         | Example                          |
 | ---------- | ----------------------------------- | -------------------------------- |
-| Web        | <http://nfd{ID}.srexperts.net:4466> | <http://nfd1.srexperts.net:4466> |
+| Web        | `http://nfd<ID>.srexperts.net:4466` | <http://nfd1.srexperts.net:4466> |
 
 When prompted for the token, paste the token you copied earlier.
 
