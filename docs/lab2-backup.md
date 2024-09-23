@@ -2,7 +2,7 @@
 hide: navigation
 ---
 
-# Lab 2: It's Friday... Go Ahead, Push to Prod!
+# Lab 2: It's Friday... Go Ahead, Push to Prod
 
 Need to add a VLAN to your data center? Push some new ACLs or BGP policies on your border leafs? Best not attempt that on a Friday in case something goes wrong. But what if it were safe to do so? What if you knew exactly what was going to happen before making the change and knew that if anything were to go wrong the entirety of your network would be rolled back to a good working state?
 
@@ -22,10 +22,9 @@ Transactions are one of the key components to ensure we reduce the human error t
 
 Log into the EDA UI by visiting the following:
 
-| Connection | URL/Command                       | Example                |
-| ---------- | --------------------------------- | ---------------------- |
-| Web        | `https://nfd`**`<id>`**`.eda.dev` | <https://nfd1.eda.dev> |
-
+| Connection | URL/Command                             | Example                      | Credentials                 |
+| ---------- | --------------------------------------- | ---------------------------- | --------------------------- |
+| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net> | `admin`<br/>`nfd+eda@nokia` |
 
 - Navigate to the Fabrics in the left-hand menu; you should see the fabric we created in Lab 1.
 - Double-click on the fabric object in the table to open up a configuration form.
@@ -44,7 +43,7 @@ You can now verify the diff in configuration between what was on the devices and
 
 <iframe width="1236" height="1000" src="https://www.youtube.com/embed/fVjviLr_pYA" title="BGP unnumbered" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## Step 2: Fail.
+## Step 2: Fail
 
 The happy flow was too easy. Let's see what happens when we encounter a failure in our transaction.
 
@@ -58,7 +57,7 @@ Add the change to the transaction basket. There are now two changes to be made a
 
 <iframe width="1221" height="986" src="https://www.youtube.com/embed/kNwbCuM2GYM" title="failed transaction pool" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## Step 3 (Optional): Uh oh, didn't mean to do that...
+## Step 3 (Optional): Uh oh, didn't mean to do that
 
 It's possible that although the devices accepted the change, the network may not be behaving as expected. Let's revert those changes to a time when life was good and the network was functioning as you wanted.
 
@@ -75,6 +74,5 @@ Find a commit hash you want to revert to and issue the following command to rest
 ```
 
 You can go back to the UI or use some of the previously used K8s tooling to verify that the system has reverted back to when you expected!
-
 
 <iframe width="1221" height="990" src="https://www.youtube.com/embed/TqfE0Kki08M" title="fabric restore" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

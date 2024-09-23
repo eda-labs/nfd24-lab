@@ -13,7 +13,7 @@ site_description: >-
 repo_name: nfd-lab
 repo_url: https://github.com/eda-labs/nfd24-lab
 edit_uri: edit/main/docs/
-site_url: "https://docs.eda.dev"
+site_url: "https://nfd.eda.dev"
 copyright: Copyright &copy; 2024 Nokia
 theme:
   name: material
