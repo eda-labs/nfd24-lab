@@ -2,11 +2,19 @@
 hide: navigation
 ---
 
-# Lab 1: Kubernetes and its Vast Toolchain
+# The Lab Environment
+
+We've got a 10 device setup, 8 leafs and 2 spines.  The topology is already deployed (Fun fact, all the devices are running virtually on containerized!).
+
+We're going to build out DC fabric on top of this topology through out this lab!
+
+# Lab 1: Using a Declaritive Approach to Network Provisioning
+
+As you may have figured out by now, K8s was our guiding light to building a truely declaritive automation platform - and so in this lab we'll use K8s and its tooling to discover what this means.
 
 You're probably wondering, "Why on earth should I venture into the world of Kubernetes (aka: K8s) to manage my data center infrastructure, like my fabric?"
 
-Well, the good news is that you don't need to, but that doesn't mean you shouldn't! With EDA, there is absolutely no requirement to know how to manage Custom Resources or really use K8s at all. You can use our UI or even our REST API if you're feeling adventurous. However, as you look to modernize your network automation toolchain, we believe you may find that the success of K8s has yielded a large number of community and enterprise integrations/tools, which you may find useful. And hey, you may even end up speaking the same language as your application folks, if that's of any interest, of course.
+Well, the good news is that you don't need to, but that doesn't mean you shouldn't! With EDA, there is absolutely no requirement to know how to manage Custom Resources or really use K8s at all.  You can use our UI or even our REST API if you're feeling adventurous. However, as you look to modernize your network automation toolchain, we believe you may find that the success of K8s has yielded a large number of community and enterprise integrations/tools, which you may find useful. And hey, you may even end up speaking the same language as your application folks, if that's of any interest, of course.
 
 Let's take a look at what it may look like to use K8s and some of its tooling to deploy a Fabric.
 
@@ -16,7 +24,7 @@ SSH into your assigned lab environment if you haven't already:
 
 | Connection | URL/Command                       | Example                |
 | ---------- | --------------------------------- | ---------------------- |
-| SSH        | `ssh nfd@nfd`**`<id>`**`@eda.dev` | `ssh nfd@nfd.eda.dev`  |
+| SSH        | `ssh nfd@nfd`**`<id>`**`@srexperts.net` | `ssh nfd@nfd1.srexperts.net`  |
 
 Kubectl is the de facto CLI tool for all things K8s. It can be used for interacting with a cluster and its resources.
 
@@ -24,10 +32,7 @@ Here is the K8s Custom Resource definition for deploying the configuration neede
 
 You can copy the YAML provided below to your terminal using your favorite text editor and then use kubectl to apply the newly created YAML file. You can take a look at the kubectl tab below and just copy past that entire command to do it all for you!
 
-```
-1. Copy content of below to the terminal using your favorite editor.
-2. kubectl apply -f <new file you just created>
-```
+Feel free to switch to the kubectl tab to copy paste the command into your terminal and apply this Fabric - in a declaritive way.
 
 /// tab | YAML
 
@@ -45,6 +50,10 @@ EOF
 ```
 
 ///
+
+How easy was that? But what actually happened?
+
+The Fabric app just went and created a bunch of lower level abstractions that make a DC fabric.  ISLs, BGP peers, BGP groups, interfaces etc  These are all abstractions which were created by the Fabric app and then eventually those abstractions created node configuration and pushed them to your topology!
 
 You can also use kubectl to view the status of your newly created Fabric and all the lower level abstractions it created!
 
@@ -76,6 +85,16 @@ To see more details about a particular ISL, press `d` while one of the ISL is se
 ## Step 3 (Optional): Clicky click with Headlamp UI
 
 Using the Headlamp K8s web UI lets make a change to our Fabric resource and see its impact on DefaultBGPPeers.
+
+| Connection | URL/Command                       | Example                |
+| ---------- | --------------------------------- | ---------------------- |
+| Web        | `http://nfd`**`<id>`**`.srexperts.net:4466` | <http://nfd1.srexperts.net:4466> |
+
+The token you need to use to login is found in the file called `hl-token` found via the SSH session.
+
+```
+cat hl-token
+```
 
 Lets change the pool used for the Interswitch Links from IPv4 to IPv6.  
 

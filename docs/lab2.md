@@ -24,7 +24,7 @@ Log into the EDA UI by visiting the following:
 
 | Connection | URL/Command                       | Example                |
 | ---------- | --------------------------------- | ---------------------- |
-| Web        | `https://nfd`**`<id>`**`.eda.dev` | <https://nfd1.eda.dev> |
+| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net> |
 
 
 - Navigate to the Virtual Networks in the left-hand menu.
