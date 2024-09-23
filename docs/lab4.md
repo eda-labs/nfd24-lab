@@ -8,6 +8,13 @@ Imagine having a powerful system that knows everything about your network—ever
 
 That’s why integration is key, and the Notifier app steps in. It bridges the gap, making sure that all those critical events and conditions are delivered exactly where they need to go, ensuring your network’s intelligence isn’t just locked away but actually working for you.
 
+/// admonition | Apps?
+    type: subtle-question
+Almost everything in EDA is considered an Application (App), for example the Fabrics app that you interacted with in [Lab 1](lab1.md) or VNET app in [Lab 2](lab2.md).  
+Apps extend the core functionality of EDA by introducing new declarative abstractions, intergrations with other systems, and more.
+
+///
+
 ## The Notifier app
 
 Notifier lets you craft and deliver personalized alerts tailored to your specific events and conditions.
@@ -16,30 +23,52 @@ the Notifier app gives you full control over how and when notifications are trig
 
 ## Step1: Install it
 
-Apps can be installed using the App Store or by applying a resource directly.
+Apps can be installed using the App Store UI or by applying a resource directly via any of the programmable interfaces.  
 The App Store method is great for "shopping" around for apps, while applying a YAML resource allows you to automate this process at will.
 
-__Installation steps__
+Here is how to install the notifier app using the App Store UI.
 
-* Navigate to __System Administration__ in the top left of the UI.
-* In the Catalog drop down menu select `3rd Party Catalog`.
-* Select the notifier app version `v1.0.3`.
-* Press Install.
+/// tab | Step 1
+Select the <kbd>System Administration</kbd> item in the left menu of the EDA UI.
+
+![p1](https://gitlab.com/rdodin/pics/-/wikis/uploads/c73335f0cefc916eb9bb78a61519faeb/image.png){width=50%}
+///
+/// tab | Step 2
+You will find yourself in the App Store UI.
+
+In the filter menu select the <kbd>Catalog</kbd> drop down menu and select <kbd>3rd Party Catalog</kbd>.
+
+![p2](https://gitlab.com/rdodin/pics/-/wikis/uploads/1dcbd1880ab509a218d08fb4fe45f2de/image.png){width=80%}
+///
+/// tab | Step 3
+Select the notifier app card to open up the application page.
+
+![p3](https://gitlab.com/rdodin/pics/-/wikis/uploads/bca4b67264938d4588867baf33ce2672/image.png){width=50%}
+///
+/// tab | Step 4
+Press Install.
+
+![p4](https://gitlab.com/rdodin/pics/-/wikis/uploads/49a7f44ca1c4af3171e6a24486c98226/image.png)
+///
 
 /// details | CLI installation option
 Alternatively, applying the below resource installs of the notifier app:
 
 /// tab | YAML Resource
+
 ```yaml
 --8<-- "docs/notifier/notifier_appinstall.yml"
 ```
+
 ///
 /// tab | `kubectl apply` command
+
 ```bash
 kubectl apply -f - <<'EOF'
 --8<-- "docs/notifier/notifier_appinstall.yml"
 EOF
 ```
+
 ///
 ///
 
@@ -76,17 +105,21 @@ To create a `Provider` using the UI:
 /// details | CLI method
 Alternatively, applying the below resource creates the same discord provider.
 /// tab | YAML Resource
+
 ```yaml
 --8<-- "docs/notifier/provider.yml"
 ```
+
 ///
 
 /// tab | `kubectl apply` command
+
 ```bash
 kubectl apply -f - <<'EOF'
 --8<-- "docs/notifier/provider.yml"
 EOF
 ```
+
 ///
 ///
 
@@ -103,17 +136,21 @@ To create an alarm-based notifier:
 /// details | CLI method
 Alternatively, applying the below resource creates the same alarm notifier.
 /// tab | YAML Resource
+
 ```yaml
 --8<-- "docs/notifier/alarm_notifier.yml"
 ```
+
 ///
 
 /// tab | `kubectl apply` command
+
 ```bash
 kubectl apply -f - <<'EOF'
 --8<-- "docs/notifier/alarm_notifier.yml"
 EOF
 ```
+
 ///
 ///
 
@@ -140,9 +177,9 @@ A query-based notifier leverages the full power of EDA Query Language, letting y
 * Under `Providers` add an item and set it to `discord`. That's the name of provider created in the previous step.
 * Under `Specification | Sources | Query`, set `Table` to `.db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.status.members.neighbors`
 * Set `Fields` to:
-    * `.db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name`
-    * `interface`
-    * `node`
+  * `.db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name`
+  * `interface`
+  * `node`
 * Set `Title` to `LLDP neighbor - {{ index . ".db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name" }} -> {{ index . "node" }}-{{ index . "interface" }}`
 * Set `Template` to `A new LLDP neighbor has appeared on interface {{ index . ".db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name" }}: host name {{ index . "node" }}, interface name {{ index . "interface" }}`
 
@@ -151,16 +188,20 @@ A query-based notifier leverages the full power of EDA Query Language, letting y
 /// details | CLI method
 Alternatively, applying the below resource creates the same query notifier.
 /// tab | YAML Resource
+
 ```yaml
 --8<-- "docs/notifier/lldp_neighbor_notifier.yml"
 ```
+
 ///
 /// tab | `kubectl apply` command
+
 ```bash
 kubectl apply -f - <<'EOF'
 --8<-- "docs/notifier/lldp_neighbor_notifier.yml"
 EOF
 ```
+
 ///
 ///
 
