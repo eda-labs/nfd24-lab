@@ -22,16 +22,10 @@ Let's take a look at what it may look like to use K8s and some of its tooling to
 
 SSH into your assigned lab environment if you haven't already:
 
-<<<<<<< HEAD
-| Connection | URL/Command                       | Example                |
-| ---------- | --------------------------------- | ---------------------- |
-| SSH        | `ssh nfd@nfd`**`<id>`**`@srexperts.net` | `ssh nfd@nfd1.srexperts.net`  |
-=======
 | Connection   | URL/Command                             | Example                          | Password        |
 | ------------ | --------------------------------------- | -------------------------------- | --------------- |
 | SSH          | `ssh nfd@nfd`**`<id>`**`@srexperts.net` | `ssh nfd@nfd1.srexperts.net`     | `nfd+eda@nokia` |
 | Web Terminal | <https://go.srlinux.dev/ac1ssh{ID}>     | <https://go.srlinux.dev/ac1ssh1> |
->>>>>>> 808ef586b6a66862c9d86f5281bf8029af4aec97
 
 Kubectl is the de facto CLI tool for all things K8s. It can be used for interacting with a cluster and its resources.
 
@@ -39,12 +33,7 @@ Here is the K8s Custom Resource definition for deploying the configuration neede
 
 You can copy the YAML provided below to your terminal using your favorite text editor and then use kubectl to apply the newly created YAML file. You can take a look at the kubectl tab below and just copy past that entire command to do it all for you!
 
-<<<<<<< HEAD
 Feel free to switch to the kubectl tab to copy paste the command into your terminal and apply this Fabric - in a declaritive way.
-=======
-1. Copy content of below to the terminal using your favorite editor.
-2. `kubectl apply -f <new file you just created>`
->>>>>>> 808ef586b6a66862c9d86f5281bf8029af4aec97
 
 /// tab | YAML
 
@@ -117,20 +106,10 @@ When prompted for the token, paste the token you copied earlier.
 
 Using the Headlamp K8s web UI lets make a change to our Fabric resource and see its impact on DefaultBGPPeers.
 
-<<<<<<< HEAD
-| Connection | URL/Command                       | Example                |
-| ---------- | --------------------------------- | ---------------------- |
-| Web        | `http://nfd`**`<id>`**`.srexperts.net:4466` | <http://nfd1.srexperts.net:4466> |
-
-The token you need to use to login is found in the file called `hl-token` found via the SSH session.
-
 ```
 cat hl-token
 ```
 
-Lets change the pool used for the Interswitch Links from IPv4 to IPv6.  
-=======
 Lets change the pool used for the Interswitch Links from IPv4 to IPv6.
->>>>>>> 808ef586b6a66862c9d86f5281bf8029af4aec97
 
 <iframe width="100%" height="600px" src="https://www.youtube.com/embed/zEKzGZa9CK4" title="head" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
