@@ -54,21 +54,22 @@ Press Install and wait a couple of seconds until the app is installed.
 //// details | CLI installation option
 Alternatively, applying the below resource installs of the notifier app.
 
-You can copy the entire command in the 2nd tab and paste it in the terminal of your VM.
+You can copy the entire command in the 1st tab and paste it in the terminal of your VM.
 
-/// tab | YAML Resource
-
-```yaml
---8<-- "docs/notifier/notifier_appinstall.yml"
-```
-
-///
 /// tab | `kubectl apply` command
 
 ```bash
 kubectl apply -f - <<'EOF'
 --8<-- "docs/notifier/notifier_appinstall.yml"
 EOF
+```
+
+///
+
+/// tab | YAML Resource
+
+```yaml
+--8<-- "docs/notifier/notifier_appinstall.yml"
 ```
 
 ///
@@ -110,13 +111,8 @@ To create a `Provider` using the UI:
 
 //// details | CLI method
 Alternatively, applying the below resource creates the same discord provider.
-/// tab | YAML Resource
 
-```yaml
---8<-- "docs/notifier/provider.yml"
-```
-
-///
+You can copy the entire command in the 1st tab and paste it in the terminal of your VM.
 
 /// tab | `kubectl apply` command
 
@@ -124,6 +120,14 @@ Alternatively, applying the below resource creates the same discord provider.
 kubectl apply -f - <<'EOF'
 --8<-- "docs/notifier/provider.yml"
 EOF
+```
+
+///
+
+/// tab | YAML Resource
+
+```yaml
+--8<-- "docs/notifier/provider.yml"
 ```
 
 ///
@@ -141,13 +145,8 @@ To create an alarm-based notifier:
 
 //// details | CLI method
 Alternatively, applying the below resource creates the same alarm notifier.
-/// tab | YAML Resource
 
-```yaml
---8<-- "docs/notifier/alarm_notifier.yml"
-```
-
-///
+You can copy the entire command in the 1st tab and paste it in the terminal of your VM.
 
 /// tab | `kubectl apply` command
 
@@ -158,6 +157,15 @@ EOF
 ```
 
 ///
+
+/// tab | YAML Resource
+
+```yaml
+--8<-- "docs/notifier/alarm_notifier.yml"
+```
+
+///
+
 ////
 
 #### Test the notifier
@@ -209,13 +217,9 @@ We will define a notifier that gets triggered when a new LLDP neighbor is discov
 
 //// details | CLI method
 Alternatively, applying the below resource creates the same query notifier.
-/// tab | YAML Resource
 
-```yaml
---8<-- "docs/notifier/lldp_neighbor_notifier.yml"
-```
+You can copy the entire command in the 1st tab and paste it in the terminal of your VM.
 
-///
 /// tab | `kubectl apply` command
 
 ```bash
@@ -225,6 +229,15 @@ EOF
 ```
 
 ///
+
+/// tab | YAML Resource
+
+```yaml
+--8<-- "docs/notifier/lldp_neighbor_notifier.yml"
+```
+
+///
+
 ////
 
 #### Test the notifier
