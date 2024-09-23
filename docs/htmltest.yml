@@ -16,6 +16,7 @@ IgnoreURLs:
   - twitter.com
   - https://linkedin.com/in
   - https://github.com/eda-labs/nfd24-lab
+  - https://github.com/nokia-eda/docs
   - https://www.nanog.org # responds with 403
 
 IgnoreDirectoryMissingTrailingSlash: true
