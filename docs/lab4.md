@@ -86,7 +86,7 @@ Together, they ensure your notifications go exactly where they’re needed, with
 
 An alarm-based notifier sends notifications triggered by alarms raised by EDA. You can choose to include or exclude specific alarms, ensuring you only get the alerts you need. Plus, you’ll be notified when those alarms are cleared, keeping everything neat and tidy.
 
-__1) Configure a Discord Provider__
+#### Configure a Discord Provider
 
 To create a `Provider` using the UI:
 
@@ -129,7 +129,7 @@ EOF
 ///
 ////
 
-__2) Define a simple Alarm notifier__
+#### Define a simple Alarm notifier
 
 To create an alarm-based notifier:
 
@@ -160,7 +160,7 @@ EOF
 ///
 ////
 
-__3) Test the notifier__
+#### Test the notifier
 
 To test the notifier the easiest way is to trigger an alarm. For this lab we simply disable an interface.
 
@@ -226,6 +226,16 @@ EOF
 
 ///
 ////
+
+#### Test the notifier
+
+To test the notifier we need to add/remove an LLDP neighbor. For this lab we simply disable an interface.
+
+* Navigate to the resources category `Topology` and select `Interfaces`.
+* Double click on any interface you like and toggle the switch that says `Enabled`.
+* Press __Commit__ at the button right of the form.
+* Check the notifications sent to the Discord Channel.
+* Enable back the interface. Check the notifications sent in the Channel.
 
 ## Step3 (optional): Customize it
 
