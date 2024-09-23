@@ -245,7 +245,7 @@ EOF
 To test the notifier we need to add/remove an LLDP neighbor. For this lab we simply disable an interface.
 
 * Navigate to the resources category `Topology` and select `Interfaces`.
-* Double click on any interface you like and toggle the switch that says `Enabled`.
+* Double click on an interface labeled `eda.nokia.com/role=interSwitch` and toggle the switch that says `Enabled`.
 * Press __Commit__ at the button right of the form.
 * Check the notifications sent to the Discord Channel.
 * Enable back the interface. Check the notifications sent in the Channel.
