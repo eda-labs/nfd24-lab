@@ -1,9 +1,0 @@
-apiVersion: core.eda.nokia.com/v1
-kind: IndexAllocationPool
-metadata:
-  name: customer1-vni-pool
-  namespace: default
-spec:
-  segments:
-  - size: 150
-    start: 100

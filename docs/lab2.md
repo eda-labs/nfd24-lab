@@ -2,13 +2,13 @@
 hide: navigation
 ---
 
-# Lab 2: It's Friday... Go Ahead, Push to Prod!
+# Lab 2: Truely Declaritive with Transactionality!
 
 Need to add a VLAN to your data center? Push some new ACLs or BGP policies on your border leafs? Best not attempt that on a Friday in case something goes wrong. But what if it were safe to do so? What if you knew exactly what was going to happen before making the change and knew that if anything were to go wrong the entirety of your network would be rolled back to a good working state?
 
-Enter EDA, your network change savior, the ambassador of stress free weekends.
+Enter EDA, your network change savior, the ambassador of stress free weekends!
 
-In EDA every configuration change is done in an all-or-nothing fashion and transacted in Git. Always.
+In EDA every configuration change is done in an all-or-nothing fashion and transacted in Git. Always. And declarative!
 
 If the desired state is not achievable even on a single device, the whole transaction is pronounced failed and the changes are reverted immediately from all of the nodes.
 
@@ -18,7 +18,7 @@ When you create any resource, EDA automatically initiates a transaction and publ
 
 Transactions are one of the key components to ensure we reduce the human error to 0, lets dig in a bit deeper.
 
-## Step 1: What's the Diff?
+## Step 1: VLAN Creation using transactions, what's the Diff?
 
 Log into the EDA UI by visiting the following:
 
@@ -27,36 +27,46 @@ Log into the EDA UI by visiting the following:
 | Web        | `https://nfd`**`<id>`**`.eda.dev` | <https://nfd1.eda.dev> |
 
 
-- Navigate to the Fabrics in the left-hand menu; you should see the fabric we created in Lab 1.
-- Double-click on the fabric object in the table to open up a configuration form.
+- Navigate to the Virtual Networks in the left-hand menu.
+- Double-click on the Virtual Network called `customer2` object in the table to open up a configuration form.
 
-From here, let's go ahead and change our Interswitch Links from using assigned IPv6 Global addresses to Unnumbered IPv6 LLA.
+From here, let's add a VLAN to our storage network.  
 
-- You can use the filter in the top left of the form to help find the fields you are looking for. You can start typing `Interswitch`, for example. Once you've found the correct fields, let's clear the IPv6 pool and use Unnumbered IPv6.
+- You can use the filter in the top left of the form to help find the fields you are looking for. You can start typing `vlan`, for example. Once you've found the correct VLAN table, click on `Add` 
 
-Go ahead and add this change to a transaction.
+Fill out the form as follows:
 
-Notice your transactions basket in the top right now has one item in it.
+- VLAN Name: `customer2-storage-network-vlan-1`
+- Select `customer2-storage-network` in the Bridge Domain drop down
+- Add `eda.nokia.com/role=edge` to the Interface Selector
+- Set `2002` in the VLAN ID field
+
+Click on `Add`, and then click on `Add To Transaction`. Notice your transactions basket in the top right now has one item in it.
 
 To verify that our change will generate the configs we are looking for, let's add a commit message and dry-run the change.
 
 You can now verify the diff in configuration between what was on the devices and what is about to be pushed! If you're happy with the change, go ahead and commit this transaction.
 
-<iframe width="1236" height="1000" src="https://www.youtube.com/embed/fVjviLr_pYA" title="BGP unnumbered" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="1222" height="989" src="https://www.youtube.com/embed/IA06uDsQBT4" title="vnet storage 2002" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## Step 2: Fail.
+## Step 2: Dealing with transaction failures
 
 The happy flow was too easy. Let's see what happens when we encounter a failure in our transaction.
 
-Navigate back to the fabric form and let's reintroduce IPv4 on our ISLs. This time, we're going to use an IPv4 address pool from which to allocate addresses. Select the `pool-new-ipv4` allocation pool, and let's add this change to our transaction and dry-run it again.
+Navigate back to the `customer2` Virtual Network configuration form.  Add another VLAN with the following properties:
 
-Notice the transaction failed, head over to see the details of the transaction.
+- VLAN Name: `customer2-storage-network-vlan-2`
+- Select `customer2-storage-network` in the Bridge Domain drop down
+- Add `eda.nokia.com/role=edge` to the Interface Selector
+- Set `1000` in the VLAN ID field
 
-Now, let's fix the issue by increasing the size of our IPv4 subnet allocation pool from the errored /30 to a /16, which should allow enough addresses to be assigned.
+To verify that our change will generate the configs we are looking for, let's add a commit message and dry-run the change.  Notice the transaction failed, head over to see the details of the transaction.
 
-Add the change to the transaction basket. There are now two changes to be made at once—dry-run it, and if complete, go ahead and commit!
+Looks like VLAN 1000 is already in use by `customer1`, we could go and fix our newly created VLAN to use a different VLAN but we're going to make things more interesting by changing the VLAN in `customer1` from 1000 to 2000 while leaving `customer2's` VLAN to 1000.  This will swap all existing subinterfaces using VLAN 1000 to VLAN 2000 and add new subinterfaces for VLAN 1000 in a new bridge domain...in a single transaction! 
 
-<iframe width="1221" height="986" src="https://www.youtube.com/embed/kNwbCuM2GYM" title="failed transaction pool" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+Add the change to the transaction basket, dry-run it and if all OK lets commit.
+
+<iframe width="1221" height="988" src="https://www.youtube.com/embed/ChWJ8ZmwjYc" title="VLAN swap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Step 3 (Optional): Uh oh, didn't mean to do that...
 
@@ -75,6 +85,3 @@ Find a commit hash you want to revert to and issue the following command to rest
 ```
 
 You can go back to the UI or use some of the previously used K8s tooling to verify that the system has reverted back to when you expected!
-
-
-<iframe width="1221" height="990" src="https://www.youtube.com/embed/TqfE0Kki08M" title="fabric restore" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

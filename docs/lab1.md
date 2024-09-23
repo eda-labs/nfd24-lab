@@ -22,6 +22,13 @@ Kubectl is the de facto CLI tool for all things K8s. It can be used for interact
 
 Here is the K8s Custom Resource definition for deploying the configuration needed to end up with a functional fabric. This is our desired intent!
 
+You can copy the YAML provided below to your terminal using your favorite text editor and then use kubectl to apply the newly created YAML file. You can take a look at the kubectl tab below and just copy past that entire command to do it all for you!
+
+```
+1. Copy content of below to the terminal using your favorite editor.
+2. kubectl apply -f <new file you just created>
+```
+
 /// tab | YAML
 
 ```yaml
@@ -38,6 +45,15 @@ EOF
 ```
 
 ///
+
+You can also use kubectl to view the status of your newly created Fabric and all the lower level abstractions it created!
+
+```
+kubectl get isl
+```
+```
+kubectl get DefaultBGPGroup bgpgroup-ebgp-sunnyvale-dc1 -o yaml
+```
 
 ## Step 2: Trust but verify with K9s
 

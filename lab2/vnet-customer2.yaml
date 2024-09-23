@@ -21,7 +21,7 @@ spec:
         tableSize: 250
       macAging: 300
       tunnelIndexPool: tunnel-index-pool
-      vniPool: customer2-vni-pool
+      vniPool: vni-pool
   - name: customer2-corp-services
     spec:
       eviPool: evi-pool
@@ -38,7 +38,7 @@ spec:
         tableSize: 250
       macAging: 300
       tunnelIndexPool: tunnel-index-pool
-      vniPool: customer2-vni-pool
+      vniPool: vni-pool
   - name: customer2-vm-network
     spec:
       eviPool: evi-pool
@@ -55,7 +55,7 @@ spec:
         tableSize: 250
       macAging: 300
       tunnelIndexPool: tunnel-index-pool
-      vniPool: customer2-vni-pool
+      vniPool: vni-pool
   vlans:
   - name: customer2-vm-network-vlan-1
     spec:

@@ -20,7 +20,7 @@ spec:
         monitoringWindow: 3
         numMoves: 5
       tunnelIndexPool: tunnel-index-pool
-      vniPool: customer1-vni-pool
+      vniPool: vni-pool
   - name: customer1-corp-services
     spec:
       eviPool: evi-pool
@@ -36,7 +36,7 @@ spec:
         monitoringWindow: 3
         numMoves: 5
       tunnelIndexPool: tunnel-index-pool
-      vniPool: customer1-vni-pool
+      vniPool: vni-pool
   - name: customer1-vm-network
     spec:
       eviPool: evi-pool
@@ -52,7 +52,7 @@ spec:
         monitoringWindow: 3
         numMoves: 5
       tunnelIndexPool: tunnel-index-pool
-      vniPool: customer1-vni-pool
+      vniPool: vni-pool
   vlans:
   - name: customer1-storage-network-vlan-1
     spec:
