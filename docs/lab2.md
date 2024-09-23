@@ -2,15 +2,13 @@
 hide: navigation
 ---
 
-# Lab 2: Truely Declaritive with Transactionality!
+# Lab 2: Truely Declarative with Transactionality
 
 Need to add a VLAN to your data center? Push some new ACLs or BGP policies on your border leafs? Best not attempt that on a Friday in case something goes wrong. But what if it were safe to do so? What if you knew exactly what was going to happen before making the change and knew that if anything were to go wrong the entirety of your network would be rolled back to a good working state?
 
 Enter EDA, your network change savior, the ambassador of stress free weekends!
 
-In EDA every configuration change is done in an all-or-nothing fashion and transacted in Git. Always. And declarative!
-
-If the desired state is not achievable even on a single device, the whole transaction is pronounced failed and the changes are reverted immediately from all of the nodes.
+In EDA every configuration change is done in an all-or-nothing fashion and transacted in Git. Always. And declarative!  If the desired state is not achievable even on a single device, the whole transaction is pronounced failed and the changes are reverted immediately from all of the nodes.
 
 The transactions are network-wide.
 
@@ -22,17 +20,17 @@ Transactions are one of the key components to ensure we reduce the human error t
 
 Log into the EDA UI by visiting the following:
 
-| Connection | URL/Command                       | Example                |
-| ---------- | --------------------------------- | ---------------------- |
-| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net> |
-
+| Connection | URL/Command                             | Example                      | Credentials                 |
+| ---------- | --------------------------------------- | ---------------------------- | --------------------------- |
+| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net> | `admin`<br/>`nfd+eda@nokia` |
 
 - Navigate to the Virtual Networks in the left-hand menu.
+    ![vn](https://gitlab.com/rdodin/pics/-/wikis/uploads/6038ffed2e93d9f7cf0f014f995b043d/image.png)
 - Double-click on the Virtual Network called `customer2` object in the table to open up a configuration form.
 
-From here, let's add a VLAN to our storage network.  
+From here, let's add a VLAN to our storage network.
 
-- You can use the filter in the top left of the form to help find the fields you are looking for. You can start typing `vlan`, for example. Once you've found the correct VLAN table, click on `Add` 
+- You can use the filter in the top left of the form to help find the fields you are looking for. You can start typing `vlan`, for example. Once you've found the correct VLAN table, click on `Add`
 
 Fill out the form as follows:
 
@@ -47,7 +45,7 @@ To verify that our change will generate the configs we are looking for, let's ad
 
 You can now verify the diff in configuration between what was on the devices and what is about to be pushed! If you're happy with the change, go ahead and commit this transaction.
 
-<iframe width="1222" height="989" src="https://www.youtube.com/embed/IA06uDsQBT4" title="vnet storage 2002" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="600px" src="https://www.youtube.com/embed/IA06uDsQBT4" title="vnet storage 2002" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Step 2: Dealing with transaction failures
 
@@ -62,13 +60,14 @@ Navigate back to the `customer2` Virtual Network configuration form.  Add anothe
 
 To verify that our change will generate the configs we are looking for, let's add a commit message and dry-run the change.  Notice the transaction failed, head over to see the details of the transaction.
 
-Looks like VLAN 1000 is already in use by `customer1`, we could go and fix our newly created VLAN to use a different VLAN but we're going to make things more interesting by changing the VLAN in `customer1` from 1000 to 2000 while leaving `customer2's` VLAN to 1000.  This will swap all existing subinterfaces using VLAN 1000 to VLAN 2000 and add new subinterfaces for VLAN 1000 in a new bridge domain...in a single transaction! 
+Looks like VLAN 1000 is already in use by `customer1`, we could go and fix our newly created VLAN to use a different VLAN but we're going to make things more interesting by changing the VLAN in `customer1` from 1000 to 2000 while leaving `customer2's` VLAN to 1000.  
+This will swap all existing subinterfaces using VLAN 1000 to VLAN 2000 and add new subinterfaces for VLAN 1000 in a new bridge domain...in a single transaction!
 
 Add the change to the transaction basket, dry-run it and if all OK lets commit.
 
-<iframe width="1221" height="988" src="https://www.youtube.com/embed/ChWJ8ZmwjYc" title="VLAN swap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="600px" src="https://www.youtube.com/embed/ChWJ8ZmwjYc" title="VLAN swap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## Step 3 (Optional): Uh oh, didn't mean to do that...
+## Step 3 (Optional): Uh oh, didn't mean to do that
 
 It's possible that although the devices accepted the change, the network may not be behaving as expected. Let's revert those changes to a time when life was good and the network was functioning as you wanted.
 
@@ -81,7 +80,7 @@ edactl git log --reverse
 Find a commit hash you want to revert to and issue the following command to restore back to that moment in time!
 
 ```
- edactl git restore <hash>
+edactl git restore <hash>
 ```
 
 You can go back to the UI or use some of the previously used K8s tooling to verify that the system has reverted back to when you expected!

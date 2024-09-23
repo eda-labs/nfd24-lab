@@ -12,20 +12,22 @@ Loosely based on Jira Query Language, EQL allows the full surface area of the ED
 
 EQL is very powerful...but...it also has a learning curve so we figured we'd try to make it easy for you to consume using natural language!
 
-Have a go by navigating to the queries page in the UI, selecting `Natural Language` in the drop down.  Here are some queries we thought were interesting to get you started!
+Have a go by navigating to the queries page in the UI, selecting `Natural Language` in the drop down.
 
-```
-List all switches sorted by CPU utilization with most utilized first
-Show me any interfaces with error counters above 0
-Show me any interfaces with error counters above 0, only show me the error packet fields and sort by most errored packets
-Show me all network instances with mac duplication detection disabled
-Which node has an interface with an IP of 11.0.0.4/32?
-Show me the fib entry for prefix 11.0.0.3/32, show me which network instance it is found in and the protocol over which it was learned
-How many sub interfaces exist on VLAN 1000
-Show me the total numbers of packets sent and received across all interfaces
-List me all nodes are running software version less than 24.8
-List me all nodes are running software version less than 24.3
-What is the serial number of linecard 1 in spine-1-1?
-```
+![eql](https://gitlab.com/rdodin/pics/-/wikis/uploads/6b0af9ab22e3a5f379c0cb612d3e3c7e/image.png)
 
-<iframe width="1221" height="988" src="https://www.youtube.com/embed/WorVl_fdjx0" title="natural language" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+Here are some queries we thought were interesting to get you started!
+
+* List all switches sorted by CPU utilization with most utilized first
+* Show me any interfaces with error counters above 0
+* Show me any interfaces with error counters above 0, only show me the error packet fields and sort by most errored packets
+* Show me all network instances with mac duplication detection disabled
+* Which node has an interface with an IP of 11.0.0.4/32?
+* Show me the fib entry for prefix 11.0.0.3/32, show me which network instance it is found in and the protocol over which it was learned
+* How many sub interfaces exist on VLAN 1000
+* Show me the total numbers of packets sent and received across all interfaces
+* List me all nodes are running software version less than 24.8
+* List me all nodes are running software version less than 24.3
+* What is the serial number of linecard 1 in spine-1-1?
+
+<iframe width="100%" height="600px" src="https://www.youtube.com/embed/WorVl_fdjx0" title="natural language" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
