@@ -14,9 +14,9 @@ Let's take a look at what it may look like to use K8s and some of its tooling to
 
 SSH into your assigned lab environment if you haven't already:
 
-| Connection   | URL/Command                             | Example                          |
-| ------------ | --------------------------------------- | -------------------------------- |
-| SSH          | `ssh nfd@nfd`**`<id>`**`@srexperts.net` | `ssh nfd@nfd1.srexperts.net`     |
+| Connection   | URL/Command                             | Example                          | Password        |
+| ------------ | --------------------------------------- | -------------------------------- | --------------- |
+| SSH          | `ssh nfd@nfd`**`<id>`**`@srexperts.net` | `ssh nfd@nfd1.srexperts.net`     | `nfd+eda@nokia` |
 | Web Terminal | <https://go.srlinux.dev/ac1ssh{ID}>     | <https://go.srlinux.dev/ac1ssh1> |
 
 Kubectl is the de facto CLI tool for all things K8s. It can be used for interacting with a cluster and its resources.
@@ -25,10 +25,8 @@ Here is the K8s Custom Resource definition for deploying the configuration neede
 
 You can copy the YAML provided below to your terminal using your favorite text editor and then use kubectl to apply the newly created YAML file. You can take a look at the kubectl tab below and just copy past that entire command to do it all for you!
 
-```
 1. Copy content of below to the terminal using your favorite editor.
-2. kubectl apply -f <new file you just created>
-```
+2. `kubectl apply -f <new file you just created>`
 
 /// tab | YAML
 
