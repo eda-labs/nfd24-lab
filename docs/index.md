@@ -18,7 +18,7 @@ Each of you has been assigned a delegate `id`; using this identifier, you can ac
 
 | Connection | URL/Command                       | Example                |
 | ---------- | --------------------------------- | ---------------------- |
-| SSH        | `ssh nfd@nfd`**`<id>`**`@eda.dev` | `ssh nfd@nfd.eda.dev`  |
+| SSH        | `ssh nfd@nfd`**`<id>`**`@eda.dev` | `ssh nfd@nfd1.eda.dev` |
 | Web        | `https://nfd`**`<id>`**`.eda.dev` | <https://nfd1.eda.dev> |
 
 As crazy as it may sound, it is 2024 and we will still ask you to have your terminals dusted off and ready to SSH. Not because we are old-fashioned, but the Infrastructure as Code movement has been around for a while and we want you to try this yourself.

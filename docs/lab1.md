@@ -14,9 +14,10 @@ Let's take a look at what it may look like to use K8s and some of its tooling to
 
 SSH into your assigned lab environment if you haven't already:
 
-| Connection | URL/Command                       | Example                |
-| ---------- | --------------------------------- | ---------------------- |
-| SSH        | `ssh nfd@nfd`**`<id>`**`@eda.dev` | `ssh nfd@nfd.eda.dev`  |
+| Connection   | URL/Command                         | Example                          |
+| ------------ | ----------------------------------- | -------------------------------- |
+| SSH          | `ssh nfd@nfd`**`<id>`**`@eda.dev`   | `ssh nfd@nfd1.eda.dev`           |
+| Web Terminal | <https://go.srlinux.dev/ac1ssh{ID}> | <https://go.srlinux.dev/ac1ssh1> |
 
 Kubectl is the de facto CLI tool for all things K8s. It can be used for interacting with a cluster and its resources.
 
@@ -51,6 +52,7 @@ You can also use kubectl to view the status of your newly created Fabric and all
 ```
 kubectl get isl
 ```
+
 ```
 kubectl get DefaultBGPGroup bgpgroup-ebgp-sunnyvale-dc1 -o yaml
 ```
@@ -63,7 +65,7 @@ From your terminal simply type in `k9s` to launch the UI.
 
 You will be shown a list of K8s pods, lets take a look at our newly deployed Fabric by pressing `:` followed by typing `fabrics` and pressing `enter`.
 
-<iframe width="1222" height="843" src="https://www.youtube.com/embed/Zm3el3psFrw" title="k9s fabric" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="600px" src="https://www.youtube.com/embed/Zm3el3psFrw" title="k9s fabric" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Note its operational state.  The Fabric emits multiple other abstractions such as Interswitch Links (ISLs), lets take a look at those!
 
@@ -71,12 +73,30 @@ Press `:` followed by `isls` and `enter`
 
 To see more details about a particular ISL, press `d` while one of the ISL is selected
 
-<iframe width="1222" height="843" src="https://www.youtube.com/embed/KpuCeAQ6aMk" title="k9s isl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="600px" src="https://www.youtube.com/embed/KpuCeAQ6aMk" title="k9s isl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Step 3 (Optional): Clicky click with Headlamp UI
 
+While DevOps folks tend to prefer CLI tools and text editors, the UI world is also a great place to be. Again, leveraging the K8s-powered open source ecosystem we deployed the Headlamp UI in our cluster to provide a web-based UI for interacting with the cluster.
+
+To access the UI you have to fetch the login token that is patiently waiting for you in your terminal:
+
+```
+[*]─[nfd1]─[~]
+└──> cat ~/hl-token
+eyJhbGciOiJSUzI1NiIsImtpzU3U0ljZld6Uk1tZEhwdnMifQ...
+```
+
+Copy the token and open up the Headlamp UI in a browser by visiting the following HTTP URL:
+
+| Connection | URL/Command                         | Example                          |
+| ---------- | ----------------------------------- | -------------------------------- |
+| Web        | <http://nfd{ID}.srexperts.net:4466> | <http://nfd1.srexperts.net:4466> |
+
+When prompted for the token, paste the token you copied earlier.
+
 Using the Headlamp K8s web UI lets make a change to our Fabric resource and see its impact on DefaultBGPPeers.
 
-Lets change the pool used for the Interswitch Links from IPv4 to IPv6.  
+Lets change the pool used for the Interswitch Links from IPv4 to IPv6.
 
-<iframe width="1222" height="989" src="https://www.youtube.com/embed/zEKzGZa9CK4" title="head" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="600px" src="https://www.youtube.com/embed/zEKzGZa9CK4" title="head" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
