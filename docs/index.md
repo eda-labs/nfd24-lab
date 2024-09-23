@@ -16,10 +16,10 @@ All you need is a web browser and a terminal emulator.
 
 Each of you has been assigned a delegate `id`; using this identifier, you can access your personal EDA environment:
 
-| Connection | URL/Command                       | Example                |
-| ---------- | --------------------------------- | ---------------------- |
-| SSH        | `ssh nfd@nfd`**`<id>`**`@eda.dev` | `ssh nfd@nfd1.eda.dev` |
-| Web        | `https://nfd`**`<id>`**`.eda.dev` | <https://nfd1.eda.dev> |
+| Connection | URL/Command                             | Example                      |
+| ---------- | --------------------------------------- | ---------------------------- |
+| SSH        | `ssh nfd@nfd`**`<id>`**`@srexperts.net` | `ssh nfd@nfd1.srexperts.net` |
+| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net> |
 
 As crazy as it may sound, it is 2024 and we will still ask you to have your terminals dusted off and ready to SSH. Not because we are old-fashioned, but the Infrastructure as Code movement has been around for a while and we want you to try this yourself.
 

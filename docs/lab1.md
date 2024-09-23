@@ -14,10 +14,10 @@ Let's take a look at what it may look like to use K8s and some of its tooling to
 
 SSH into your assigned lab environment if you haven't already:
 
-| Connection   | URL/Command                         | Example                          |
-| ------------ | ----------------------------------- | -------------------------------- |
-| SSH          | `ssh nfd@nfd`**`<id>`**`@eda.dev`   | `ssh nfd@nfd1.eda.dev`           |
-| Web Terminal | <https://go.srlinux.dev/ac1ssh{ID}> | <https://go.srlinux.dev/ac1ssh1> |
+| Connection   | URL/Command                             | Example                          |
+| ------------ | --------------------------------------- | -------------------------------- |
+| SSH          | `ssh nfd@nfd`**`<id>`**`@srexperts.net` | `ssh nfd@nfd1.srexperts.net`     |
+| Web Terminal | <https://go.srlinux.dev/ac1ssh{ID}>     | <https://go.srlinux.dev/ac1ssh1> |
 
 Kubectl is the de facto CLI tool for all things K8s. It can be used for interacting with a cluster and its resources.
 
