@@ -2,21 +2,21 @@
 hide: navigation
 ---
 
-# Lab 2: Truely Declarative with Transactionality
+# Lab 2: Truely declarative with transactionality
 
-Need to add a VLAN to your data center? Push some new ACLs or BGP policies on your border leafs? Best not attempt that on a Friday in case something goes wrong. But what if it were safe to do so? What if you knew exactly what was going to happen before making the change and knew that if anything were to go wrong the entirety of your network would be rolled back to a good working state?
+Need to add a VLAN to your data center? Push some new ACLs or BGP policies on your border leafs? Best not attempt that on a Friday in case something goes wrong. But what if it were safe to do so? What if you knew exactly what was going to happen before making the change and knew that if anything went wrong, the entirety of your network would be rolled back to a good working state?
 
-Enter EDA, your network change savior, the ambassador of stress free weekends!
+Enter EDA, your network change savior, the ambassador of stress-free weekends!
 
-In EDA every configuration change is done in an all-or-nothing fashion and transacted in Git. Always. And declarative!  If the desired state is not achievable even on a single device, the whole transaction is pronounced failed and the changes are reverted immediately from all of the nodes.
+In EDA, every configuration change is done in an all-or-nothing fashion and transacted in Git. Always. And declaratively! If the desired state is not achievable, even on a single device, the whole transaction is pronounced failed, and the changes are immediately reverted from all nodes.
 
 The transactions are network-wide.
 
 When you create any resource, EDA automatically initiates a transaction and publishes its result.
 
-Transactions are one of the key components to ensure we reduce the human error to 0, lets dig in a bit deeper.
+Transactions are one of the key components to ensure we reduce human error to zero. Let's dig in a bit deeper.
 
-## Step 1: VLAN Creation using transactions, what's the Diff?
+## Step 1: VLAN creation using transactions, what's the Diff?
 
 Log into the EDA UI by visiting the following:
 
@@ -58,12 +58,13 @@ Navigate back to the `customer2` Virtual Network configuration form.  Add anothe
 - Add `eda.nokia.com/role=edge` to the Interface Selector
 - Set `1000` in the VLAN ID field
 
-To verify that our change will generate the configs we are looking for, let's add a commit message and dry-run the change.  Notice the transaction failed, head over to see the details of the transaction.
+To verify that our change will generate the configs we are looking for, let's add a commit message and dry-run the change. Notice the transaction failed—head over to see the details of the transaction.
 
-Looks like VLAN 1000 is already in use by `customer1`, we could go and fix our newly created VLAN to use a different VLAN but we're going to make things more interesting by changing the VLAN in `customer1` from 1000 to 2000 while leaving `customer2's` VLAN to 1000.  
-This will swap all existing subinterfaces using VLAN 1000 to VLAN 2000 and add new subinterfaces for VLAN 1000 in a new bridge domain...in a single transaction!
+Looks like VLAN 1000 is already in use by `customer1`. We could go and fix our newly created VLAN to use a different VLAN, but we're going to make things more interesting by changing the VLAN in `customer1` from 1000 to 2000 while leaving `customer2`'s VLAN at 1000.
 
-Add the change to the transaction basket, dry-run it and if all OK lets commit.
+This will swap all existing subinterfaces using VLAN 1000 to VLAN 2000 and add new subinterfaces for VLAN 1000 in a new bridge domain... all in a single transaction!
+
+Add the change to the transaction basket, dry-run it, and if all is OK, let's commit.
 
 <iframe width="100%" height="600px" src="https://www.youtube.com/embed/ChWJ8ZmwjYc" title="VLAN swap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

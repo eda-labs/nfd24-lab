@@ -6,9 +6,9 @@ hide: navigation
 
 A key philosophy of EDA is to make state streamable for further processing, where state can be sourced externally via gRPC, internally via core services, or locally via Kubernetes. Beyond being used as event triggers, state is incredibly useful for debugging, and so we required a means to allow humans to interact with it also. Enter the EDA Query Language, or EQL.
 
-Loosely based on Jira Query Language, EQL allows the full surface area of the EDA API, all state info in EDB, along with the full surface area of managed endpoints to be queried and parsed in real time. Queries can be made real time in the heat of troubleshooting, with instantaneous, streaming results. Queries can be sourced as data for visualizations, and streamed via the API or StateAggregator, allowing external applications to constrain event triggers.
+Loosely based on Jira Query Language, EQL allows the full surface area of the EDA API, all state info in EDB, along with the full surface area of managed endpoints to be queried and parsed in real time. Queries can be made real time in the heat of troubleshooting, with instantaneous, streaming results. Queries can be sourced as data for visualizations, and streamed via the API allowing external applications to constrain event triggers.
 
-## Step 1: EDA Query Language...Naturally
+## Step 1: EDA Query Language...naturally
 
 EQL is very powerful...but...it also has a learning curve so we figured we'd try to make it easy for you to consume using natural language!
 
