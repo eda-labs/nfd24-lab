@@ -7,12 +7,18 @@ spec:
   enabled: true
   sources:
     query:
-      title: "LLDP neighbor - new"
       table: .db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.status.members.neighbors
       fields:
       - .db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name
       - interface
       - node
-      template: "A new LLDP neighbor has appeared on interface {{ index . \".db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name\" }}: host name {{ index . \"node\" }}, interface name {{ index . \"interface\" }}"
+      title: >-
+        LLDP neighbor - 
+        {{ index . ".db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name" }} 
+        -> {{ index . "node" }}-{{ index . "interface" }}"
+      template: >- 
+        "A new LLDP neighbor has appeared on interface 
+        {{ index . \".db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name\" }}: 
+        host name {{ index . \"node\" }}, interface name {{ index . \"interface\" }}"
   providers:
   - discord
