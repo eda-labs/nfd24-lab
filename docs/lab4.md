@@ -46,13 +46,15 @@ Select the notifier app card to open up the application page.
 ![p3](https://gitlab.com/rdodin/pics/-/wikis/uploads/bca4b67264938d4588867baf33ce2672/image.png){width=50%}
 ///
 /// tab | Step 4
-Press Install.
+Press Install and wait a couple of seconds until the app is installed.
 
 ![p4](https://gitlab.com/rdodin/pics/-/wikis/uploads/49a7f44ca1c4af3171e6a24486c98226/image.png)
 ///
 
-/// details | CLI installation option
-Alternatively, applying the below resource installs of the notifier app:
+//// details | CLI installation option
+Alternatively, applying the below resource installs of the notifier app.
+
+You can copy the entire command in the 2nd tab and paste it in the terminal of your VM.
 
 /// tab | YAML Resource
 
@@ -70,7 +72,7 @@ EOF
 ```
 
 ///
-///
+////
 
 ## Step2: Use it
 
@@ -88,10 +90,14 @@ __1) Configure a Discord Provider__
 
 To create a `Provider` using the UI:
 
+* Switch back to the <kbd>Main</kbd> panel if you're still in the App Store UI.
 * Navigate to the `Notifier` resource category, select `Provider` and press __Create__ at the top right corner of the UI.
-* Fill in the `Provider` form by giving the `Provider` a name. For e.g `discord` since we will be sending notifications to a Discord channel.
-* Under the Specification section, set the URI to:
- `discord://yQeo_GQx3enCixFzlxE1UetZAUnSF9isl6rBfkBgb9vuurlgomstbhPpoyJryAMeLdby@1280864861592485900`
+* Fill in the `Provider` form by giving the `Provider` a name. For instance - `discord` - since we will be sending notifications to a Discord channel.
+* Under the Specification section, set the `URI` to:
+
+    ```
+    discord://yQeo_GQx3enCixFzlxE1UetZAUnSF9isl6rBfkBgb9vuurlgomstbhPpoyJryAMeLdby@1280864861592485900
+    ```
 
     The URI format is `discord://token@webhookid` where `token` and `webhookid` are extracted from the webhook URL that Discord generates for you.
 
@@ -102,7 +108,7 @@ To create a `Provider` using the UI:
 
 * Press __Commit__. The Provider will be applied to the cluster and will appear in the list of `Providers`
 
-/// details | CLI method
+//// details | CLI method
 Alternatively, applying the below resource creates the same discord provider.
 /// tab | YAML Resource
 
@@ -121,19 +127,19 @@ EOF
 ```
 
 ///
-///
+////
 
 __2) Define a simple Alarm notifier__
 
 To create an alarm-based notifier:
 
 * Navigate to the `Notifier` resource category, select `Notifier` and press __Create__ at the top right corner of the UI.
-* Fill in the `Notifier` form by giving the `Notifier` a name. For e.g `alarms-to-discord` since we will be sending alarms to a Discord channel.
+* Fill in the `Notifier` form by giving the `Notifier` a name. For example - `alarms-to-discord` - since we will be sending alarms to a Discord channel.
 * Under `Providers` add an item and set it to `discord`. That's the name of provider created in the previous step.
 * Under `Specification | Sources | Alarms`, add an `Include` item and set it to `*`. That means include all alarms.
 * Press __Commit__. The Notifier will be applied to the cluster and will appear in the list of `Notifiers`
 
-/// details | CLI method
+//// details | CLI method
 Alternatively, applying the below resource creates the same alarm notifier.
 /// tab | YAML Resource
 
@@ -152,7 +158,7 @@ EOF
 ```
 
 ///
-///
+////
 
 __3) Test the notifier__
 
@@ -168,24 +174,40 @@ To test the notifier the easiest way is to trigger an alarm. For this lab we sim
 
 A query-based notifier leverages the full power of EDA Query Language, letting you precisely choose which objects and conditions trigger your notifications. You can also customize the notification’s title and body using templates, giving you complete control over the details.
 
-1) We will reuse the same provider as in the previous example
+We will define a notifier that gets triggered when a new LLDP neighbor is discovered and reuse the same Discord Provider defined in the previous step.
 
-2) We will define a notifier that gets trigger when a new LLDP neighbor is discovered.
+#### Configuring query-based notifier
 
 * Navigate to the `Notifier` resource category, select `Notifier` and press __Create__ at the top right corner of the UI.
-* Fill in the `Notifier` form by giving the `Notifier` a name. For e.g `new-lldp-neighbor` since we will be sending alarms to a Discord channel.
+* Fill in the `Notifier` form by giving the `Notifier` a name. For example - `new-lldp-neighbor` - since we will be sending alarms to a Discord channel.
 * Under `Providers` add an item and set it to `discord`. That's the name of provider created in the previous step.
-* Under `Specification | Sources | Query`, set `Table` to `.db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.status.members.neighbors`
-* Set `Fields` to:
-  * `.db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name`
-  * `interface`
-  * `node`
-* Set `Title` to `LLDP neighbor - {{ index . ".db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name" }} -> {{ index . "node" }}-{{ index . "interface" }}`
-* Set `Template` to `A new LLDP neighbor has appeared on interface {{ index . ".db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name" }}: host name {{ index . "node" }}, interface name {{ index . "interface" }}`
+* Under `Specification | Sources | Query`, set `Table` to
+
+    ```
+    .db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.status.members.neighbors
+    ```
+
+* Add three `Fields` values in order for us to later use them in the message templates:
+
+    * `.db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name`
+    * `interface`
+    * `node`
+
+* Set `Title` to
+
+    ```
+    LLDP neighbor - {{ index . ".db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name" }} -> {{ index . "node" }}-{{ index . "interface" }}
+    ```
+
+* Set `Template` to
+
+    ```
+    A new LLDP neighbor has appeared on interface {{ index . ".db.cr-status.interfaces_eda_nokia_com.v1alpha1.interface.name" }}: host name {{ index . "node" }}, interface name {{ index . "interface" }}
+    ```
 
 * Press __Commit__. The Notifier will be applied to the cluster and will appear in the list of `Notifiers`
 
-/// details | CLI method
+//// details | CLI method
 Alternatively, applying the below resource creates the same query notifier.
 /// tab | YAML Resource
 
@@ -203,7 +225,7 @@ EOF
 ```
 
 ///
-///
+////
 
 ## Step3 (optional): Customize it
 
