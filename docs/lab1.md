@@ -1,13 +1,6 @@
 ---
 hide: navigation
 ---
-
-# The Lab Environment
-
-We have a 10-device setup, consisting of 8 leaf switches and 2 spines. The topology is already deployed (Fun fact: all the devices are running in containers!).
-
-We're going to build a data center (DC) fabric on top of this topology throughout this lab!
-
 # Lab 1: Using a declarative approach to network provisioning
 
 As you may have figured out by now, Kubernetes (K8s) was our guiding light in building a truly declarative automation platform—so in this lab, we'll use K8s and its tools to explore what this means.
@@ -22,17 +15,13 @@ Let's take a look at what it may look like to use K8s and some of its tools to d
 
 SSH into your assigned lab environment if you haven't already:
 
-| Connection   | URL/Command                             | Example                          | Password        |
-| ------------ | --------------------------------------- | -------------------------------- | --------------- |
-| SSH          | `ssh nfd@nfd`**`<id>`**`.srexperts.net` | `ssh nfd@nfd1.srexperts.net`     | `nfd+eda@nokia` |
-| Web Terminal | <https://go.srlinux.dev/ac1ssh{ID}>     | <https://go.srlinux.dev/ac1ssh1> |
+--8<-- "docs/index.md:connectivity"
 
 Kubectl is the de facto CLI tool for all things K8s. It can be used to interact with a cluster and its resources.
 
 Here is the K8s Custom Resource definition for deploying the configuration needed to create a functional fabric. This is our desired intent!
 
 You can use the kubectl tab below and copy-paste the command to do it all for you!
-
 
 /// tab | `kubectl`
 
@@ -51,18 +40,17 @@ EOF
 
 ///
 
-
 How easy was that? But what actually happened?
 
 The Fabric app just created a bunch of lower-level abstractions that make up a DC fabric—ISLs, BGP peers, BGP groups, interfaces, etc. These abstractions were created by the `Fabric` app and then translated into node configurations, which were pushed to your topology!
 
 You can also use `kubectl` to view the status of your newly created `Fabric` and all the lower-level abstractions it generated!
 
-```
+```shell
 kubectl get isl
 ```
 
-```
+```shell
 kubectl get DefaultBGPGroup bgpgroup-ebgp-sunnyvale-dc1 -o yaml
 ```
 
