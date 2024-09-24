@@ -30,7 +30,7 @@ Log into the EDA UI by visiting the following:
 
 From here, let's add a VLAN to our storage network.
 
-- You can use the filter in the top left of the form to help find the fields you are looking for. You can start typing `vlan`, for example. Once you've found the correct VLAN table, click on `Add`
+- You can use the filter in the top left of the form to help find the fields you are looking for. You can start typing `vlan`, for example. Once you've found the correct VLAN table, click on <kbd>Add</kdb>.
 
 Fill out the form as follows:
 
@@ -39,9 +39,9 @@ Fill out the form as follows:
 - Add `eda.nokia.com/role=edge` to the Interface Selector
 - Set `2002` in the VLAN ID field
 
-Click on `Add`, and then click on `Add To Transaction`. Notice your transactions basket in the top right now has one item in it, click on that icon to view the transaction basket contents.
+Click on <kbd>Add</kbd>, and then click on <kbd>Add To Transaction</kbd>. Notice your transactions basket in the top right now has one item in it, click on that icon to view the transaction basket contents.
 
-To verify that our change will generate the configs we are looking for, from the transaction basket let's add a commit message and dry-run the change.
+To verify that our change will generate the configs we are looking for, from the transaction basket let's add a commit message click <kbd>Dry Run</kbd> to safely inspect the change scope.
 
 You can now verify the diff in configuration between what was on the devices and what is about to be pushed! If you're happy with the change, go ahead and commit this transaction.
 
@@ -58,13 +58,13 @@ Navigate back to the `customer2` Virtual Network configuration form.  Add anothe
 - Add `eda.nokia.com/role=edge` to the Interface Selector
 - Set `1000` in the VLAN ID field
 
-To verify that our change will generate the configs we are looking for, let's add a commit message and dry-run the change. Notice the transaction failed—head over to see the details of the transaction.
+To verify that our change will generate the configs we are looking for, let's add a commit message and hit <kbd>Dry Run</kbd> again to verify the change. Notice the transaction failed — head over to see the details of the transaction.
 
-Looks like VLAN 1000 is already in use by `customer1`. We could go and fix our newly created VLAN to use a different VLAN, but we're going to make things more interesting by changing the VLAN in `customer1` from 1000 to 2000 while leaving `customer2`'s VLAN at 1000.
+Looks like VLAN 1000 is already in use by `customer1`. We could go and fix our newly created VLAN to use a different VLAN, but we're going to make things more interesting by changing the VLAN in `customer1` from `1000` to `2000` while leaving `customer2`'s VLAN at 1000.
 
-This will swap all existing subinterfaces using VLAN 1000 to VLAN 2000 and add new subinterfaces for VLAN 1000 in a new bridge domain... all in a single transaction!
+This will swap all existing subinterfaces using VLAN `1000` to VLAN `2000` and add new subinterfaces for VLAN `1000` in a new bridge domain... all in a single transaction!
 
-Add the change to the transaction basket, dry-run it, and if all is OK, let's commit.
+Using the familiar workflow of editing the VLAN parameters, go to the `customer1` Virtual Network, change the VLAN ID, and add this change to the transaction basket. Dry-run it, and if all is OK, let's commit.
 
 <iframe width="100%" height="600px" src="https://www.youtube.com/embed/ChWJ8ZmwjYc" title="VLAN swap" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 

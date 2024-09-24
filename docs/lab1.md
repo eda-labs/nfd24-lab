@@ -3,17 +3,17 @@ hide: navigation
 ---
 # Lab 1: Using a declarative approach to network provisioning
 
-As you may have figured out by now, Kubernetes (K8s) was our guiding light in building a truly declarative automation platform—so in this lab, we'll use K8s and its tools to explore what this means.
+As you may have figured out by now, Kubernetes (K8s) was our guiding light in building a truly declarative automation platform — so in this lab, we'll use K8s and its tools to explore what this means.
 
 You're probably wondering, "Why on earth should I venture into the world of Kubernetes (aka K8s) to manage my data center infrastructure, like my fabric?"
 
-Well, the good news is that you don't need to—but that doesn't mean you shouldn't! With EDA, there is absolutely no requirement to know how to manage Custom Resources or even use K8s at all. You can use our UI or even our REST API if you're feeling adventurous. However, as you modernize your network automation toolchain, you may find that the success of K8s has brought a large number of community and enterprise integrations/tools, which you might find useful. And hey, you may even end up speaking the same language as your application folks, if that's of any interest, of course.
+Well, the good news is that you don't need to — but that doesn't mean you shouldn't! With EDA, there is absolutely no requirement to know how to manage Custom Resources or even use K8s at all. You can use our UI or even our REST API if you're feeling adventurous. However, as you modernize your network automation toolchain, you may find that the success of K8s has brought a large number of community and enterprise integrations/tools, which you might find useful. And hey, you may even end up speaking the same language as your application folks, if that's of any interest, of course.
 
 Let's take a look at what it may look like to use K8s and some of its tools to deploy a fabric.
 
 ## Step 1: Creating a Fabric using Kubectl
 
-SSH into your assigned lab environment if you haven't already:
+SSH into your assigned lab environment if you haven't already (you don't need EDA UI just yet):
 
 --8<-- "docs/index.md:connectivity"
 
@@ -21,9 +21,8 @@ Kubectl is the de facto CLI tool for all things K8s. It can be used to interact 
 
 Here is the K8s Custom Resource in the YAML format for deploying the configuration needed to create a functional fabric. This is our desired intent!
 
-You can use the kubectl tab below and copy the command and paste it in your terminal to do it all for you!
-
-/// tab | `kubectl`
+/// tab | `kubectl apply`
+You can copy the command and paste it in your terminal to do it all for you!
 
 ```bash
 cat << 'EOF' | tee my-fabric.yaml | kubectl apply -f -
@@ -43,15 +42,15 @@ This tab shows the YAML used in the previous tab with syntax highlighting. It is
 
 How easy was that? But what actually happened?
 
-The Fabric app just created a bunch of lower-level abstractions that make up a DC fabric — inter-switch links (ISLs), BGP peers, BGP groups, interfaces, etc. These abstractions were created by the `Fabric` app and then translated into node configurations, which were pushed to your topology!
+The Fabric app that comes preinstalled in EDA just created a bunch of lower-level abstractions that make up a DC fabric — inter-switch links (ISLs), BGP peers, BGP groups, interfaces, etc. These abstractions were created by the `Fabric` app and then translated into node-specific configurations, which were pushed to your topology!
 
 You can also use `kubectl` to view the status of your newly created `Fabric` and all the lower-level abstractions it generated!
 
-```shell title="listing all inter-switch links that were created by the Fabric app"
+```shell title="listing all inter-switch links"
 kubectl get isl
 ```
 
-You may as well take a look at the other sub resource like BGP groups that were created by the `Fabric` app in their YAML format that provides a more detailed view of the resource configuration and state.
+You may as well take a look at the other sub resource like BGP groups that were created by the same `Fabric` app. Using the YAML format that provides a more detailed view of the resource configuration and state.
 
 ```shell
 kubectl get DefaultBGPGroup bgpgroup-ebgp-sunnyvale-dc1 -o yaml
@@ -59,7 +58,7 @@ kubectl get DefaultBGPGroup bgpgroup-ebgp-sunnyvale-dc1 -o yaml
 
 ## Step 2: Trust but verify with K9s
 
-Let's verify that something actually happened, but this time let's use another K8s tool—a popular CLI UI called K9s.
+Let's verify that something actually happened, but this time let's use another K8s tool — a popular CLI UI called K9s.
 
 From your terminal, simply type `k9s` to launch the UI.
 
