@@ -1,0 +1,80 @@
+apiVersion: services.eda.nokia.com/v1alpha1
+kind: VirtualNetwork
+metadata:
+  name: customer1
+  namespace: default
+spec:
+  bridgeDomains:
+  - name: customer1-storage-network
+    spec:
+      eviPool: evi-pool
+      l2proxyARPND:
+        proxyARP: false
+        proxyND: false
+        tableSize: 250
+      macAging: 300
+      macDuplicationDetection:
+        action: StopLearning
+        enabled: false
+        holdDownTime: 9
+        monitoringWindow: 3
+        numMoves: 5
+      tunnelIndexPool: tunnel-index-pool
+      vniPool: vni-pool
+  - name: customer1-corp-services
+    spec:
+      eviPool: evi-pool
+      l2proxyARPND:
+        proxyARP: false
+        proxyND: false
+        tableSize: 250
+      macAging: 300
+      macDuplicationDetection:
+        action: StopLearning
+        enabled: false
+        holdDownTime: 9
+        monitoringWindow: 3
+        numMoves: 5
+      tunnelIndexPool: tunnel-index-pool
+      vniPool: vni-pool
+  - name: customer1-vm-network
+    spec:
+      eviPool: evi-pool
+      l2proxyARPND:
+        proxyARP: false
+        proxyND: false
+        tableSize: 250
+      macAging: 300
+      macDuplicationDetection:
+        action: StopLearning
+        enabled: false
+        holdDownTime: 9
+        monitoringWindow: 3
+        numMoves: 5
+      tunnelIndexPool: tunnel-index-pool
+      vniPool: vni-pool
+  vlans:
+  - name: customer1-storage-network-vlan-1
+    spec:
+      bridgeDomain: customer1-storage-network
+      interfaceSelector:
+      - eda.nokia.com/role=edge
+      vlanID: "1000"
+  - name: customer1-vm-network-vlan-1
+    spec:
+      bridgeDomain: customer1-vm-network
+      interfaceSelector:
+      - eda.nokia.com/role=edge
+      vlanID: "1500"
+  - name: customer1-corp-services-vlan-1
+    spec:
+      bridgeDomain: customer1-corp-services
+      interfaceSelector:
+      - eda.nokia.com/role=edge
+      vlanID: "1700"
+  - name: customer1-storage-network-vlan-2
+    spec:
+      bridgeDomain: customer1-storage-network
+      interfaceSelector:
+      - eda.nokia.com/role=edge
+      vlanID: "1001"

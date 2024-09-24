@@ -10,10 +10,10 @@ site_author: Nokia
 site_description: >-
   EDA is the platform for automating your infrastructure.
 # Repository
-repo_name: docs
-repo_url: https://github.com/nokia-eda/docs
+repo_name: nfd-lab
+repo_url: https://github.com/eda-labs/nfd24-lab
 edit_uri: edit/main/docs/
-site_url: "https://docs.eda.dev"
+site_url: "https://nfd.eda.dev"
 copyright: Copyright &copy; 2024 Nokia
 theme:
   name: material
