@@ -92,9 +92,9 @@ eyJhbGciOiJSUaaaSomeLongStringaaazI1NiIsImtpZXhwSomeLongString...
 
 Copy the token and open up the Headlamp UI in a browser by visiting the following HTTP URL:
 
-| Connection | URL/Command                         | Example                          |
-| ---------- | ----------------------------------- | -------------------------------- |
-| Web        | `http://nfd<ID>.srexperts.net:4466` | <http://nfd1.srexperts.net:4466> |
+| Connection | URL/Command                         | Example                                                 |
+| ---------- | ----------------------------------- | ------------------------------------------------------- |
+| Web        | `http://nfd<ID>.srexperts.net:4466` | <http://nfd1.srexperts.net:4466>{ data-proofer-ignore } |
 
 When prompted for the token, paste the token you copied earlier.
 

@@ -20,9 +20,9 @@ Transactions are one of the key components to ensure we reduce human error to ze
 
 Log into the EDA UI by visiting the following:
 
-| Connection | URL/Command                             | Example                      | :fontawesome-solid-user-secret: PaS$w0яd |
-| ---------- | --------------------------------------- | ---------------------------- | ---------------------------------------- |
-| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net> | user: `admin`<br/>pass: `nfd+eda@nokia`  |
+| Connection | URL/Command                             | Example                                             | :fontawesome-solid-user-secret: PaS$w0яd |
+| ---------- | --------------------------------------- | --------------------------------------------------- | ---------------------------------------- |
+| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net>{ data-proofer-ignore } | user: `admin`<br/>pass: `nfd+eda@nokia`  |
 
 - Navigate to the Virtual Networks in the left-hand menu.
     ![vn](https://gitlab.com/rdodin/pics/-/wikis/uploads/6038ffed2e93d9f7cf0f014f995b043d/image.png)

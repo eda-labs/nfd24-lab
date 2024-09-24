@@ -24,7 +24,7 @@ Log into the EDA UI by visiting the following:
 
 | Connection | URL/Command                             | Example                      | Credentials                 |
 | ---------- | --------------------------------------- | ---------------------------- | --------------------------- |
-| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net> | `admin`<br/>`nfd+eda@nokia` |
+| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net>{ data-proofer-ignore } | `admin`<br/>`nfd+eda@nokia` |
 
 - Navigate to the Fabrics in the left-hand menu; you should see the fabric we created in Lab 1.
 - Double-click on the fabric object in the table to open up a configuration form.

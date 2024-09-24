@@ -16,10 +16,10 @@ All you need is a web browser and a terminal emulator.
 
 Each of you has been assigned a delegate `id`; using this identifier, you can access your personal EDA environment:
 <!-- --8<-- [start:connectivity] -->
-| Connection | URL/Command                             | Example                      | :fontawesome-solid-user-secret: PaS$w0яd |
-| ---------- | --------------------------------------- | ---------------------------- | ---------------------------------------- |
-| SSH        | `ssh nfd@nfd`**`<id>`**`@srexperts.net` | `ssh nfd@nfd1.srexperts.net` | user: `nfd`<br/>pass: `nfd+eda@nokia`    |
-| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net> | user: `admin`<br/>pass: `nfd+eda@nokia`  |
+| Connection | URL/Command                             | Example                                             | :fontawesome-solid-user-secret: PaS$w0яd |
+| ---------- | --------------------------------------- | --------------------------------------------------- | ---------------------------------------- |
+| SSH        | `ssh nfd@nfd`**`<id>`**`@srexperts.net` | `ssh nfd@nfd1.srexperts.net`                        | user: `nfd`<br/>pass: `nfd+eda@nokia`    |
+| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net>{ data-proofer-ignore } | user: `admin`<br/>pass: `nfd+eda@nokia`  |
 <!-- --8<-- [end:connectivity] -->
 
 As crazy as it may sound, it is 2024 and we will still ask you to have your terminals dusted off and ready to SSH. Not because we are old-fashioned, but the Infrastructure as Code movement has been around for a while and we want you to try this yourself.
