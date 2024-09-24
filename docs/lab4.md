@@ -11,7 +11,7 @@ That’s why integration is key, and the Notifier app steps in. It bridges the g
 /// admonition | Apps?
     type: subtle-question
 Almost everything in EDA is considered an Application (App), for example the Fabrics app that you interacted with in [Lab 1](lab1.md) or VNET app in [Lab 2](lab2.md).  
-Apps extend the core functionality of EDA by introducing new declarative abstractions, intergrations with other systems, and more.
+Apps extend the core functionality of EDA by introducing new declarative abstractions, integrations with other systems, and more.
 
 ///
 
@@ -52,6 +52,7 @@ Press Install and wait a couple of seconds until the app is installed.
 ///
 
 //// details | CLI installation option
+    type: code-example
 Alternatively, applying the below resource installs of the notifier app.
 
 You can copy the entire command in the 1st tab and paste it in the terminal of your VM.
@@ -94,22 +95,30 @@ To create a `Provider` using the UI:
 * Switch back to the <kbd>Main</kbd> panel if you're still in the App Store UI.
 * Navigate to the `Notifier` resource category, select `Provider` and press __Create__ at the top right corner of the UI.
 * Fill in the `Provider` form by giving the `Provider` a name. For instance - `discord` - since we will be sending notifications to a Discord channel.
-* Under the Specification section, set the `URI` to:
+* Under the Specification section, set the `URI` to a Discord webhook URL as per the table below:
 
-    ```
-    discord://yQeo_GQx3enCixFzlxE1UetZAUnSF9isl6rBfkBgb9vuurlgomstbhPpoyJryAMeLdby@1280864861592485900
-    ```
+    | ID  | Provider URI                                                                                         |
+    | --- | ---------------------------------------------------------------------------------------------------- |
+    | 1   | `discord://ngfxfs_dqpVeqfDkiE71H3PKGEoy5Wscn5b_ryUcY4DsvqU-GOVsKt9lDIsHZOEDHM4X@1288084599100014625` |
+    | 2   | `discord://mGfzyFdGpzS3JVs6Z7Lf_qr4ItHDQuHoXT4b1eJADMgLnS55DeUxNBYJJLVzcreoZU-s@1288086952611942451` |
+    | 3   | `discord://k1qfnWxXxJPZaFgE2M2F-QOfMz9n-Sb5H-CAqvaoWmYax3zawZEwqgg96-Os1xbxvkdr@1288087087714668584` |
+    | 4   | `discord://qXKnozshwfWOwToWgNuYSuzIsbRCwWqzhWaJBKTdADVpBHYje1K1cRBV5LBlLnsUxM3E@1288087170959278193` |
+    | 5   | `discord://voxNXRuKscxYqg_0rqKvU4Vsl9-TNVXElA0B6Kgu5lmJEg3lyS65huuyQBlwhRQB9OEo@1288087265700220958` |
+    | 6   | `discord://CTlgXETsDxsYzp1Gx43Ah-YoT45sUMJDH1uaCxQQgF7y5lMTBxsZ-j2zd9dd9FH82VVX@1288087396528947230` |
+    | 7   | `discord://M7GyV8_Hs3EasuftTzg6exTOBufOlEPmBt6P4euXjdi0YXodoaOzxZeqTVWEpErXUx9r@1288087488652644412` |
+    | 8   | `discord://Xcyqy9Po978SbT9TozhfaQVrVJoZTkBCRfT0ykwq2laS0UgYj1JMA-JYzsGPaI1wPDwc@1288087568797405265` |
 
     The URI format is `discord://token@webhookid` where `token` and `webhookid` are extracted from the webhook URL that Discord generates for you.
 
     ```text
     https://discord.com/api/webhooks/webhookid/token
-                                    ^^^^^^^^^ ^^^^^  
+                                     ^^^^^^^^^ ^^^^^
     ```
 
 * Press __Commit__. The Provider will be applied to the cluster and will appear in the list of `Providers`
 
 //// details | CLI method
+    type: code-example
 Alternatively, applying the below resource creates the same discord provider.
 
 You can copy the entire command in the 1st tab and paste it in the terminal of your VM.
@@ -144,6 +153,7 @@ To create an alarm-based notifier:
 * Press __Commit__. The Notifier will be applied to the cluster and will appear in the list of `Notifiers`
 
 //// details | CLI method
+    type: code-example
 Alternatively, applying the below resource creates the same alarm notifier.
 
 You can copy the entire command in the 1st tab and paste it in the terminal of your VM.
@@ -216,6 +226,7 @@ We will define a notifier that gets triggered when a new LLDP neighbor is discov
 * Press __Commit__. The Notifier will be applied to the cluster and will appear in the list of `Notifiers`
 
 //// details | CLI method
+    type: code-example
 Alternatively, applying the below resource creates the same query notifier.
 
 You can copy the entire command in the 1st tab and paste it in the terminal of your VM.
