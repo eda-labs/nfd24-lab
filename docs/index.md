@@ -18,7 +18,7 @@ Each of you has been assigned a delegate `id`; using this identifier, you can ac
 <!-- --8<-- [start:connectivity] -->
 | Connection | URL/Command                             | Example                                             | :fontawesome-solid-user-secret: PaS$w0яd |
 | ---------- | --------------------------------------- | --------------------------------------------------- | ---------------------------------------- |
-| SSH        | `ssh nfd@nfd`**`<id>`**`@srexperts.net` | `ssh nfd@nfd1.srexperts.net`                        | user: `nfd`<br/>pass: `nfd+eda@nokia`    |
+| SSH        | `ssh nfd@nfd`**`<id>`**`.srexperts.net` | `ssh nfd@nfd1.srexperts.net`                        | user: `nfd`<br/>pass: `nfd+eda@nokia`    |
 | EDA UI     | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net>{ data-proofer-ignore } | user: `admin`<br/>pass: `nfd+eda@nokia`  |
 <!-- --8<-- [end:connectivity] -->
 
