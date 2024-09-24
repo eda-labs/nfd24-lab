@@ -2,7 +2,7 @@
 hide: navigation
 ---
 
-# Lab 2: Truely declarative with transactionality
+# Lab 2: Truly declarative with transactionality
 
 Need to add a VLAN to your data center? Push some new ACLs or BGP policies on your border leafs? Best not attempt that on a Friday in case something goes wrong. But what if it were safe to do so? What if you knew exactly what was going to happen before making the change and knew that if anything went wrong, the entirety of your network would be rolled back to a good working state?
 
@@ -20,9 +20,9 @@ Transactions are one of the key components to ensure we reduce human error to ze
 
 Log into the EDA UI by visiting the following:
 
-| Connection | URL/Command                             | Example                      | Credentials                 |
-| ---------- | --------------------------------------- | ---------------------------- | --------------------------- |
-| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net> | `admin`<br/>`nfd+eda@nokia` |
+| Connection | URL/Command                             | Example                      | :fontawesome-solid-user-secret: PaS$w0яd |
+| ---------- | --------------------------------------- | ---------------------------- | ---------------------------------------- |
+| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net> | user: `admin`<br/>pass: `nfd+eda@nokia`  |
 
 - Navigate to the Virtual Networks in the left-hand menu.
     ![vn](https://gitlab.com/rdodin/pics/-/wikis/uploads/6038ffed2e93d9f7cf0f014f995b043d/image.png)
@@ -39,7 +39,7 @@ Fill out the form as follows:
 - Add `eda.nokia.com/role=edge` to the Interface Selector
 - Set `2002` in the VLAN ID field
 
-Click on `Add`, and then click on `Add To Transaction`. Notice your transactions basket in the top right now has one item in it, click on that icon to view the transaction basket contents. 
+Click on `Add`, and then click on `Add To Transaction`. Notice your transactions basket in the top right now has one item in it, click on that icon to view the transaction basket contents.
 
 To verify that our change will generate the configs we are looking for, from the transaction basket let's add a commit message and dry-run the change.
 
@@ -74,13 +74,13 @@ It's possible that although the devices accepted the change, the network may not
 
 Head back to your terminal and let's take a look at the Git logs from all the successful transactions we've made so far.
 
-```
+```shell
 edactl git log --reverse
 ```
 
 Find a commit hash you want to revert to and issue the following command to restore back to that moment in time!
 
-```
+```shell
 edactl git restore <hash>
 ```
 

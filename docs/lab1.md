@@ -19,9 +19,9 @@ SSH into your assigned lab environment if you haven't already:
 
 Kubectl is the de facto CLI tool for all things K8s. It can be used to interact with a cluster and its resources.
 
-Here is the K8s Custom Resource definition for deploying the configuration needed to create a functional fabric. This is our desired intent!
+Here is the K8s Custom Resource in the YAML format for deploying the configuration needed to create a functional fabric. This is our desired intent!
 
-You can use the kubectl tab below and copy-paste the command to do it all for you!
+You can use the kubectl tab below and copy the command and paste it in your terminal to do it all for you!
 
 /// tab | `kubectl`
 
@@ -33,6 +33,7 @@ EOF
 
 ///
 /// tab | YAML
+This tab shows the YAML used in the previous tab with syntax highlighting. It is the same payload that was used to create the `Fabric` app.
 
 ```yaml
 --8<-- "lab1/fabric_1.yaml"
@@ -42,13 +43,15 @@ EOF
 
 How easy was that? But what actually happened?
 
-The Fabric app just created a bunch of lower-level abstractions that make up a DC fabric—ISLs, BGP peers, BGP groups, interfaces, etc. These abstractions were created by the `Fabric` app and then translated into node configurations, which were pushed to your topology!
+The Fabric app just created a bunch of lower-level abstractions that make up a DC fabric — inter-switch links (ISLs), BGP peers, BGP groups, interfaces, etc. These abstractions were created by the `Fabric` app and then translated into node configurations, which were pushed to your topology!
 
 You can also use `kubectl` to view the status of your newly created `Fabric` and all the lower-level abstractions it generated!
 
-```shell
+```shell title="listing all inter-switch links that were created by the Fabric app"
 kubectl get isl
 ```
+
+You may as well take a look at the other sub resource like BGP groups that were created by the `Fabric` app in their YAML format that provides a more detailed view of the resource configuration and state.
 
 ```shell
 kubectl get DefaultBGPGroup bgpgroup-ebgp-sunnyvale-dc1 -o yaml
@@ -60,14 +63,14 @@ Let's verify that something actually happened, but this time let's use another K
 
 From your terminal, simply type `k9s` to launch the UI.
 
-You will be shown a list of K8s pods. Let’s take a look at our newly deployed `Fabric` by pressing `:` followed by typing `fabrics` and pressing `enter`.
+You will be shown a list of K8s pods. Let’s take a look at our newly deployed `Fabric` by pressing <kbd>:</kbd> followed by typing `fabrics` and pressing `enter`.
 
 <iframe width="100%" height="600px" src="https://www.youtube.com/embed/Zm3el3psFrw" title="k9s fabric" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 Note its operational state. The Fabric emits multiple other abstractions such as Interswitch Links (ISLs); let's take a look at those!
 
-Press `:` followed by `isls` and press `enter`.
+Press <kbd>:</kbd> followed by `isls` and press `enter`.
 
-To see more details about a particular ISL, press `d` while one of the ISLs is selected.
+To see more details about a particular ISL, press <kbd>d</kbd> while one of the ISLs is selected.
 
 <iframe width="100%" height="600px" src="https://www.youtube.com/embed/KpuCeAQ6aMk" title="k9s isl" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -77,14 +80,14 @@ While DevOps folks tend to prefer CLI tools and text editors, the UI world is al
 
 To access the UI, you need to fetch the login token that is patiently waiting for you in your terminal:
 
-```
+```shell
 cat ~/hl-token
 ```
 
 The output should be a string like this:
 
 ```
-eyJhbGciOiJSUzI1NiIsImtpZCI6IjBmcmdvOWJtc2wtSlA1S2RhcDBrOTIwS3hUVzU3U0ljZld6Uk1tZEhwdnMifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzI3MDg1MDUwLCJpYXQiOjE3MjcwODE0NTAsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJoZWFkbGFtcC1hZG1pbiIsInVpZCI6IjNhZTljMjBkLWEzMWItNGE1Yy1iZTMxLTBiNDZiMTczNmU1NyJ9fSwibmJmIjoxNzI3MDgxNDUwLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06aGVhZGxhbXAtYWRtaW4ifQ.XbriCIhAtlbhfCDm8D330eng_x66K49x43oOlhDbmGBeJ89mDveV1EkovsE_i7hRlYjHZP3E-UgMrugXsFQ3oDXuYmFq0fLhFgbQzfF5CBG4DpLb1_bA-dX30MNDE0n7RRn0xKJWqHmqlTVnxR9fVJb8ooJ56ll5RxnCP4_6i8pE_oQ_7dDIZyGyZ1QP5_86DuJXPE81HBx4kSuVTCCOx3hM5LNhLFOjBhenqcyk36mQMr39Nbr9FumKxZ_vktzt30YtUCrDWJG-pnRPzpvK5_2OgCYat5-uul5dR1VHanuf-zS1OOUJt_sTa3zXJbSsyQ4Cl1arTqNAJU5ktMpaoA
+eyJhbGciOiJSUaaaSomeLongStringaaazI1NiIsImtpZXhwSomeLongString...
 ```
 
 Copy the token and open up the Headlamp UI in a browser by visiting the following HTTP URL:
