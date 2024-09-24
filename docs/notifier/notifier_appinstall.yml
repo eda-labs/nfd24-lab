@@ -1,0 +1,11 @@
+apiVersion: appstore.eda.nokia.com/v1
+kind: AppInstall
+metadata:
+  name: notifier.nokia
+spec:
+  app: notifier
+  catalog: kmrd-eda-catalog
+  vendor: nokia
+  version:
+    type: semver
+    value: v1.0.3
