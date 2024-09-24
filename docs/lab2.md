@@ -39,9 +39,9 @@ Fill out the form as follows:
 - Add `eda.nokia.com/role=edge` to the Interface Selector
 - Set `2002` in the VLAN ID field
 
-Click on `Add`, and then click on `Add To Transaction`. Notice your transactions basket in the top right now has one item in it.
+Click on `Add`, and then click on `Add To Transaction`. Notice your transactions basket in the top right now has one item in it, click on that icon to view the transaction basket contents. 
 
-To verify that our change will generate the configs we are looking for, let's add a commit message and dry-run the change.
+To verify that our change will generate the configs we are looking for, from the transaction basket let's add a commit message and dry-run the change.
 
 You can now verify the diff in configuration between what was on the devices and what is about to be pushed! If you're happy with the change, go ahead and commit this transaction.
 

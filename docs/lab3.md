@@ -18,16 +18,17 @@ Have a go by navigating to the queries page in the UI, selecting `Natural Langua
 
 Here are some queries we thought were interesting to get you started!
 
-* List all switches sorted by CPU utilization with most utilized first
-* Show me any interfaces with error counters above 0
-* Show me any interfaces with error counters above 0, only show me the error packet fields and sort by most errored packets
-* Show me all network instances with mac duplication detection disabled
-* Which node has an interface with an IP of 11.0.0.4/32?
-* Show me the fib entry for prefix 11.0.0.3/32, show me which network instance it is found in and the protocol over which it was learned
-* How many sub interfaces exist on VLAN 1000
-* Show me the total numbers of packets sent and received across all interfaces
+* List me up interfaces
+* List me all interfaces that have an MTU of 9232, sorted by interface name
+* What statistics are available on interfaces
 * List me all nodes are running software version less than 24.8
 * List me all nodes are running software version less than 24.3
 * What is the serial number of linecard 1 in spine-1-1?
+* Show me the unique reasons interfaces are down
+* show me the unique reasons interfaces are down, count the unique values
+* Show me all my processes sorted by memory usage descending
+* Show me the total numbers of packets sent on all interfaces
+* Show me the number of mac addresses on subinterfaces on "leaf-1-1", include the interface name
+* Google translate show me up interfaces on "leaf-1-1" - french and japanese
 
 <iframe width="100%" height="600px" src="https://www.youtube.com/embed/WorVl_fdjx0" title="natural language" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
