@@ -19,10 +19,10 @@ Each of you has been assigned a delegate `id`; using this identifier, you can ac
 | Connection | URL/Command                             | Example                                             | :fontawesome-solid-user-secret: PaS$w0яd |
 | ---------- | --------------------------------------- | --------------------------------------------------- | ---------------------------------------- |
 | SSH        | `ssh nfd@nfd`**`<id>`**`@srexperts.net` | `ssh nfd@nfd1.srexperts.net`                        | user: `nfd`<br/>pass: `nfd+eda@nokia`    |
-| Web        | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net>{ data-proofer-ignore } | user: `admin`<br/>pass: `nfd+eda@nokia`  |
+| EDA UI     | `https://nfd`**`<id>`**`.srexperts.net` | <https://nfd1.srexperts.net>{ data-proofer-ignore } | user: `admin`<br/>pass: `nfd+eda@nokia`  |
 <!-- --8<-- [end:connectivity] -->
 
-As crazy as it may sound, it is 2024 and we will still ask you to have your terminals dusted off and ready to SSH. Not because we are old-fashioned, but the Infrastructure as Code movement has been around for a while and we want you to try this yourself.
+As crazy as it may sound, it is 2024 and we still ask you to have your terminals dusted off and ready to SSH. Not because we are old-fashioned, but because the Infrastructure as Code movement has _code_ in the name not for nothing.
 
 /// details | :scream: I don't have a terminal emulator
     type: danger
@@ -40,10 +40,17 @@ Once the web terminal is open, click on the :octicons-plus-circle-24: button and
 
 ## The Lab Environment
 
-We have a 10-device setup, consisting of 8 leaf switches and 2 spines. The topology is already deployed (Fun fact: all the devices are running in containers!).
+We have a 12-nodes setup, consisting of 8 leaf switches, 2 spines and 2 border leafs. The topology is already deployed (Fun fact: all the devices are running in containers!).
+
+<figure>
+  <div class='mxgraph' style='max-width:100%;border:1px solid transparent;margin:0 auto; display:block;box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);border-radius: 0.25rem;' data-mxgraph='{"page":0,"zoom":2,"highlight":"#0000ff","nav":true,"resize":true,"edit":"_blank","url":"https://raw.githubusercontent.com/eda-labs/nfd24-lab/main/topo.drawio"}'></div>
+  <figcaption>Lab topology</figcaption>
+</figure>
 
 We're going to start our journey by building a data center (DC) fabric on top of this topology in the first lab exercise!
 
 This is all we ask of you, lets jump right into the first lab!
 
 [:octicons-arrow-right-24: Lab1](lab1.md)
+
+<script type="text/javascript" src="https://viewer.diagrams.net/js/viewer-static.min.js" async></script>
